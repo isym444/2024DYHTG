@@ -114,7 +114,8 @@ func update_comodities()->void:
 	for bank in banks:
 		total+=abs(risk_performance_map[bank.risk_tolerance_value])
 	#average of bank absolute performances is a proxy/indicator of overall volatility i.e. high volatility -> more skewed/extreme average -> can be used to set SD of normal distribution function that determines commodity prices
-	average=total/banks.size()
+	if(banks.size()>0):
+		average=total/banks.size()
 	
 	#if your average bank performance is too extreme (further away from 0), then your commodity prices will also be extreme i.e. use it to update your normal distribution S.D.s
 	#maximum possible abs(average) will be 2500 so want to *100 and make it never go below 0
@@ -128,9 +129,7 @@ var oil_per_time = 0 #from oil_pumps
 var materials_per_time = 0 #from materials_factories
 var energy_per_time = 0 #from wind_turbines
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass
+
 
 func getUpdatedPerformance(risk_tol: bankState) -> int:
 	if(risk_tol==bankState.CONSERVATIVE):
@@ -167,13 +166,37 @@ func update_world_health() -> void:
 	world_health-=banks.size()
 	world_health+=forests.size()
 
-var time_passed = 0.0 #in seconds
-# Called every frame. 'delta' is the elapsed time since the previous frame
+var popup_scene = preload("res://scene/popuptest.tscn")
+var popup_instance
+func show_popup():
+	# Center the popup on the screen
+	popup_instance.popup_centered()
+	popup_instance.show()  # Manually show it
+	print("popup being shown")
 
+	# Set some text for the RichTextLabel (optional)
+	popup_instance.get_node("RichTextLabel").bbcode_text = "[b]Hello![/b] This is your popup with styled text."
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	# Instantiate the popup
+	popup_instance = popup_scene.instantiate()
+
+	# Add the popup instance to the current scene
+	add_child(popup_instance)
+
+	# Hide the popup initially
+	popup_instance.hide()
+	
+
+var time_passed = 0.0 #in seconds
+
+# Called every frame. 'delta' is the elapsed time since the previous frame
 func _process(delta: float) -> void:
 	time_passed += delta
+	#print(time_passed)
 	
-	if time_passed == 5.0:
+	if time_passed > 5.0:
 		#time management
 		time_survived += 5
 		time_passed = 0.0
@@ -213,8 +236,9 @@ func _process(delta: float) -> void:
 		if(world_health<200):
 			people-=100
 		
-		#if(world_health<200):
-			#bring up popup warning user health is low
+		if(world_health<200):
+		#print("time passed")
+			show_popup()
 		
 		#resources values updates
 		money+=money_per_time
