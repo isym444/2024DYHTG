@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="DYHTG2024"
-run/main_scene="res://scene/main.tscn"
+run/main_scene="res://scene/menu/start.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+DrawLine3d="*res://script/global/DrawLine3D.gd"
 
 [filesystem]
 
