@@ -292,10 +292,8 @@ func _process(delta: float) -> void:
 		#materials+=materials_per_time
 		energy+=energy_per_time
 		
-
-		
-		#if(money<0 || people<0 || world_health<0):
-			#ENDGAME
+		if(money<0 || people<0 || world_health<0):
+			get_tree().change_scene_to_file("res://scene/menu/end.tscn")
 		
 
 #Test function
