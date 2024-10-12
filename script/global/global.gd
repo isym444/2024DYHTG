@@ -24,6 +24,7 @@ var time_survived = 0 #in seconds
 enum bankState {CONSERVATIVE, RISKY, YOLO}
 
 #Buildings
+var currentBuilding:int = 0
 var bank_template = {
 	"x": null, 
 	"y": null, 

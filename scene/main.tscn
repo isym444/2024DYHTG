@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dvdvbhec54mwk"]
+[gd_scene load_steps=6 format=3 uid="uid://dvdvbhec54mwk"]
 
 [ext_resource type="Script" path="res://script/main.gd" id="1_sv0h2"]
 [ext_resource type="Texture2D" uid="uid://7rqounoht2cq" path="res://asset/sprite/selector.png" id="2_h3jqb"]
 [ext_resource type="Script" path="res://script/viewControl.gd" id="3_7of7j"]
+[ext_resource type="PackedScene" uid="uid://cfo20g138gkji" path="res://scene/uI.tscn" id="4_6w7bi"]
 
 [sub_resource type="Environment" id="Environment_cvtbx"]
 background_mode = 1
@@ -30,3 +31,5 @@ fov = 20.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="view"]
 transform = Transform3D(0.739572, 0.649795, 0.175498, -0.673077, 0.71399, 0.192836, 0, -0.26074, 0.965409, 0, 6.18253, 1.21206)
+
+[node name="UI" parent="." instance=ExtResource("4_6w7bi")]
