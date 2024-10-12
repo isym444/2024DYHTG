@@ -5,6 +5,8 @@ const oil_per_factory = 1 #MB millions of barrels per time
 const materials_per_factory = 5 #building units
 const energy_per_turbine = 5 #GW
 
+var currentBuilding: int = 0
+
 #Resources
 var money = 10000000 #GBP (10 million) #money can go down as non-residential buildings cost money to operate so they can operate at deficit if you don't sell your oil/energy or price of sell is too low
 var energy = 2400 #GW (100GWh average forc city so nough for 24h)
