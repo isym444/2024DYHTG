@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://coby8dlx1m8vs"]
+
+[node name="WindTurbine" type="Node3D"]
