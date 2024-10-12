@@ -69,6 +69,7 @@ func add_apartment_building(x_value, y_value, z_value)->void:
 		return
 	var new_building=new_building_helper(x_value, y_value, z_value)
 	apartment_buildings.append(new_building)
+	people+=100
 	world_health-=50
 	
 func add_oil_pumps(x_value, y_value, z_value)->void:
@@ -201,6 +202,16 @@ func _process(delta: float) -> void:
 		
 		#update world health
 		update_world_health()
+		
+		#if world health is too bad, people start dying
+		if(world_health<700):
+			people-=5
+		if(world_health<500):
+			people-=10
+		if(world_health<300):
+			people-=30
+		if(world_health<200):
+			people-=100
 		
 		#if(world_health<200):
 			#bring up popup warning user health is low
