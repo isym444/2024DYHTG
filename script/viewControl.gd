@@ -3,9 +3,9 @@ extends Node3D
 var camera_position:Vector3
 var camera_rotation:Vector3
 
-@export var rotationInc:int = 90
-
-@onready var camera = $Camera
+var rotationInc:int = 90
+var zoomInc:int = 20
+@export var view_camera:Camera3D
 
 func _ready():
 	
@@ -24,7 +24,7 @@ func _process(delta):
 
 # Handle input
 
-func handle_input(_delta):
+func handle_input(delta):
 	
 	#movement of camera
 	var input := Vector3.ZERO
@@ -46,3 +46,11 @@ func handle_input(_delta):
 	# Back to center
 	if Input.is_action_pressed("camera_center"):
 		camera_position = Vector3()
+		
+		
+	#zoom of camera
+	if Input.is_action_just_pressed("camera_zoom_in"):
+		view_camera.fov = lerp(view_camera.fov, view_camera.fov-zoomInc, delta * 5)
+	if Input.is_action_just_pressed("camera_zoom_out"):
+		view_camera.fov = lerp(view_camera.fov, view_camera.fov+zoomInc, delta * 5)
+		
