@@ -5,13 +5,20 @@ const oil_per_factory = 1 #MB millions of barrels per time
 const materials_per_factory = 5 #building units
 const energy_per_turbine = 5 #GW
 
+const bank_building_cost = 3000000
+const apartment_building_cost = 3000000
+const oil_pump_building_cost = 3000000
+const materials_factory_cost = 3000000
+const wind_turbine_building_cost = 3000000
+const forest_building_cost = 3000000
+
 #Resources
 var money = 10000000 #GBP (10 million) #money can go down as non-residential buildings cost money to operate so they can operate at deficit if you don't sell your oil/energy or price of sell is too low
 var energy = 2400 #GW (100GWh average forc city so nough for 24h)
 var oil = 5 #MB millions of barrels USA produces 11 MBPD
 var materials = 100 #building units (each building requires different amount of materials)
 var people = 10
-var world_health = 1000 #in %
+var world_health = 1000 #in arbitrary units
 var time_survived = 0 #in seconds
 
 enum bankState {CONSERVATIVE, RISKY, YOLO}
@@ -25,12 +32,16 @@ var bank_template = {
 }
 var banks = [] #array of dictionaries {"x":-10,"y":8,"z":3, "risk_tolerance":bankState}
 func add_bank(x_value, y_value, z_value, risk_tolerance_value: bankState)->void:
+	if(money-bank_building_cost<0):
+		#LUCA TO ADD SIGNAL
+		return
 	var new_bank = bank_template.duplicate() # Duplicate the template to avoid modifying the original
 	new_bank["x"] = x_value
 	new_bank["y"] = y_value
 	new_bank["z"] = z_value
 	new_bank["risk_tolerance"] = risk_tolerance_value
 	banks.append(new_bank)
+	world_health-=50
 var risk_performance_map = {bankState.CONSERVATIVE:0, bankState.RISKY:0, bankState.YOLO:0}
 
 var apartment_buildings = [] #array of dictionaries {"x":-10,"y":8, "z":3}
@@ -53,16 +64,29 @@ func new_building_helper(x_value, y_value, z_value)->Dictionary:
 	return new_building
 
 func add_apartment_building(x_value, y_value, z_value)->void:
+	if(money-apartment_building_cost<0):
+		#LUCA TO ADD SIGNAL
+		return
 	var new_building=new_building_helper(x_value, y_value, z_value)
 	apartment_buildings.append(new_building)
+	people+=100
+	world_health-=50
 	
 func add_oil_pumps(x_value, y_value, z_value)->void:
+	if(money-oil_pump_building_cost<0):
+		#LUCA TO ADD SIGNAL
+		return
 	var new_building=new_building_helper(x_value, y_value, z_value)
 	oil_pumps.append(new_building)
+	world_health-=20
 	
 func add_materials_factories(x_value, y_value, z_value)->void:
+	if(money-materials_factory_cost<0):
+		#LUCA TO ADD SIGNAL
+		return
 	var new_building=new_building_helper(x_value, y_value, z_value)
 	materials_factories.append(new_building)
+	world_health-=100
 
 #Actions
 var times_ocean_cleaned = 0 
@@ -90,7 +114,8 @@ func update_comodities()->void:
 	for bank in banks:
 		total+=abs(risk_performance_map[bank.risk_tolerance_value])
 	#average of bank absolute performances is a proxy/indicator of overall volatility i.e. high volatility -> more skewed/extreme average -> can be used to set SD of normal distribution function that determines commodity prices
-	average=total/banks.size()
+	if(banks.size()>0):
+		average=total/banks.size()
 	
 	#if your average bank performance is too extreme (further away from 0), then your commodity prices will also be extreme i.e. use it to update your normal distribution S.D.s
 	#maximum possible abs(average) will be 2500 so want to *100 and make it never go below 0
@@ -104,9 +129,7 @@ var oil_per_time = 0 #from oil_pumps
 var materials_per_time = 0 #from materials_factories
 var energy_per_time = 0 #from wind_turbines
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass
+
 
 func getUpdatedPerformance(risk_tol: bankState) -> int:
 	if(risk_tol==bankState.CONSERVATIVE):
@@ -135,14 +158,47 @@ func sell_energy() -> void:
 	if(energy>0):
 		money+=materials_price
 		energy-=50
+		
+func update_world_health() -> void:
+	world_health-=oil_pumps.size()*20
+	world_health-=apartment_buildings.size()
+	world_health-=materials_factories.size()*10
+	world_health-=banks.size()
+	world_health+=forests.size()
+
+var popup_scene = preload("res://scene/popuptest.tscn")
+var popup_instance
+func show_popup(text: String):
+	# Center the popup on the screen
+	popup_instance.popup_centered()
+	popup_instance.show()  # Manually show it
+	print("popup being shown")
+
+	# Set some text for the RichTextLabel (optional)
+	popup_instance.get_node("RichTextLabel").bbcode_text = text
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	# Instantiate the popup
+	popup_instance = popup_scene.instantiate()
+
+	# Add the popup instance to the current scene
+	add_child(popup_instance)
+
+	# Hide the popup initially
+	popup_instance.hide()
+	
 
 var time_passed = 0.0 #in seconds
-# Called every frame. 'delta' is the elapsed time since the previous frame
 
+var health_above_200 = 1
+
+# Called every frame. 'delta' is the elapsed time since the previous frame
 func _process(delta: float) -> void:
 	time_passed += delta
+	#print(time_passed)
 	
-	if time_passed == 5.0:
+	if time_passed > 5.0:
 		#time management
 		time_survived += 5
 		time_passed = 0.0
@@ -151,6 +207,14 @@ func _process(delta: float) -> void:
 		oil_per_time = oil_pumps.size()*oil_per_factory
 		materials_per_time = materials_factories.size()*materials_per_factory
 		energy_per_time = wind_turbines.size()*energy_per_turbine
+		
+		#update money based on operating costs of buildings
+		money-=oil_pumps.size()*100
+		money-=materials_factories.size()*100
+		money-=wind_turbines.size()*10
+		
+		#update money based on taxes from people
+		money+=people
 		
 		for bank in banks:
 			#update risk tolerance
@@ -161,15 +225,42 @@ func _process(delta: float) -> void:
 		#update commodities after bank performance is updated
 		update_comodities()
 		
+		#update world health
+		update_world_health()
+		
+		#if world health is too bad, people start dying
+		if(world_health<700):
+			people-=5
+		if(world_health<500):
+			people-=10
+		if(world_health<300):
+			people-=30
+		if(world_health<200):
+			people-=100
+		
+		if(health_above_200==0 && world_health>200):
+			health_above_200=1
+		
+		if(world_health<200 && health_above_200==1):
+		#print("time passed")
+			show_popup("Careful, your health is getting low!")
+			health_above_200=0
+		
 		#resources values updates
 		money+=money_per_time
 		oil+=oil_per_time
 		materials+=materials_per_time
 		energy+=energy_per_time
 		
+
 		
-func _unhandled_input(event: InputEvent) -> void:
-	if(Input.is_action_just_pressed("test")):
-		print(oil)
-		sell_oil()
-		print(oil)
+		#if(money<0 || people<0 || world_health<0):
+			#ENDGAME
+		
+
+#Test function
+#func _unhandled_input(event: InputEvent) -> void:
+	#if(Input.is_action_just_pressed("test")):
+		#print(oil)
+		#sell_oil()
+		#print(oil)
