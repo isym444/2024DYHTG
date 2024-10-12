@@ -1,3 +1,10 @@
-[gd_scene format=3 uid="uid://c0x3fndcc3bc4"]
+[gd_scene load_steps=2 format=3 uid="uid://c0x3fndcc3bc4"]
+
+[ext_resource type="Texture2D" uid="uid://byegd07gqi7fg" path="res://asset/sprite/forest-removebg-preview.png" id="1_ga3k8"]
 
 [node name="Forest" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.2, 0)
+billboard = 1
+texture = ExtResource("1_ga3k8")

@@ -1,3 +1,10 @@
-[gd_scene format=3 uid="uid://btw435ii0juu2"]
+[gd_scene load_steps=2 format=3 uid="uid://btw435ii0juu2"]
+
+[ext_resource type="Texture2D" uid="uid://buoa5mcs35ko0" path="res://asset/sprite/investment_bank-removebg-preview.png" id="1_m1y15"]
 
 [node name="InvestmentBank" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.4, 0)
+billboard = 1
+texture = ExtResource("1_m1y15")

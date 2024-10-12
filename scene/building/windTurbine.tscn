@@ -1,3 +1,10 @@
-[gd_scene format=3 uid="uid://coby8dlx1m8vs"]
+[gd_scene load_steps=2 format=3 uid="uid://coby8dlx1m8vs"]
+
+[ext_resource type="Texture2D" uid="uid://xa10o182tdq2" path="res://asset/sprite/wind_turbine-removebg-preview.png" id="1_ikw7w"]
 
 [node name="WindTurbine" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.9, 0)
+billboard = 1
+texture = ExtResource("1_ikw7w")
