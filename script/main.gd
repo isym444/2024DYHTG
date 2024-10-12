@@ -25,7 +25,14 @@ func _process(delta):
 func _unhandled_input(event):
 	if(Input.is_action_just_pressed("click")):
 		print(plane_position)
-		var building = load("res://scene/building/residential.tscn").instantiate()
+		#check for placment conditions
+		if(plane_position.x < -bounds or plane_position.x > bounds or plane_position.z < -bounds or plane_position.z > bounds):
+			print("out of bounds")
+			return
+		
+		#instantiate selected building
+		print(plane_position)
+		var building = load("res://scene/building/residentialBuilding.tscn").instantiate()
 		building.global_position = plane_position
 		# Add the TextureRect to the scene
 		add_child(building)

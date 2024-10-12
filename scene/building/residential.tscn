@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://8f67u1y35kt"]
 
-[ext_resource type="Texture2D" uid="uid://dhrc5lq8bo5ma" path="res://assest/sprite/residential.png" id="1_iuuyr"]
+[ext_resource type="Texture2D" path="res://assest/sprite/residential.png" id="1_iuuyr"]
 
 [node name="Residential" type="Node3D"]
 

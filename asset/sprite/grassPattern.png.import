@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhrc5lq8bo5ma"
-path.s3tc="res://.godot/imported/residential.png-f7793d8fad7f36f8d5cbc102e2397412.s3tc.ctex"
+uid="uid://c28gg1rmqdmy2"
+path.s3tc="res://.godot/imported/grassPattern.png-85f8c25fdacdd550271b8c9ac8b0a8ce.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assest/sprite/residential.png"
-dest_files=["res://.godot/imported/residential.png-f7793d8fad7f36f8d5cbc102e2397412.s3tc.ctex"]
+source_file="res://asset/sprite/grassPattern.png"
+dest_files=["res://.godot/imported/grassPattern.png-85f8c25fdacdd550271b8c9ac8b0a8ce.s3tc.ctex"]
 
 [params]
 
