@@ -168,14 +168,14 @@ func update_world_health() -> void:
 
 var popup_scene = preload("res://scene/popuptest.tscn")
 var popup_instance
-func show_popup():
+func show_popup(text: String):
 	# Center the popup on the screen
 	popup_instance.popup_centered()
 	popup_instance.show()  # Manually show it
 	print("popup being shown")
 
 	# Set some text for the RichTextLabel (optional)
-	popup_instance.get_node("RichTextLabel").bbcode_text = "[b]Hello![/b] This is your popup with styled text."
+	popup_instance.get_node("RichTextLabel").bbcode_text = text
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -238,7 +238,7 @@ func _process(delta: float) -> void:
 		
 		if(world_health<200):
 		#print("time passed")
-			show_popup()
+			show_popup("Careful, your health is getting low!")
 		
 		#resources values updates
 		money+=money_per_time
