@@ -1,3 +1,10 @@
-[gd_scene format=3 uid="uid://cxt0c5icuuolb"]
+[gd_scene load_steps=2 format=3 uid="uid://cxt0c5icuuolb"]
+
+[ext_resource type="Texture2D" uid="uid://e24ateox85a7" path="res://asset/sprite/oil_pump-removebg-preview.png" id="1_cvewv"]
 
 [node name="OilPump" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0.3, 0)
+billboard = 1
+texture = ExtResource("1_cvewv")
