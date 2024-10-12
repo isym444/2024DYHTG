@@ -14,6 +14,11 @@ var canBuild = true
 func _ready():
 	plane = Plane(Vector3.UP, Vector3.ZERO)
 	global.cantBuild.connect(blockBuild)
+	for i in range(-bounds,bounds+1):
+		var row = []
+		for j in range(-bounds,bounds+1):
+			row.append(-1)
+		buildingPlacment.append(row)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -26,11 +31,16 @@ func _process(delta):
 	selector.position = lerp(selector.position, plane_position, delta * 40)
 
 func _input(event):
+	if(Input.is_action_just_pressed("test")):
+		print(buildingPlacment)
 	if(Input.is_action_just_pressed("click")):
 		print(canBuild)
 		#check for placment conditions
 		if(plane_position.x < -bounds or plane_position.x > bounds or plane_position.z < -bounds or plane_position.z > bounds):
 			print("out of bounds")
+			return
+		if(buildingPlacment[plane_position.x][plane_position.z] != -1):
+			print("building already placed there")
 			return
 		var building
 		#instantiate selected building
@@ -58,6 +68,7 @@ func _input(event):
 			canBuild = true
 			return
 		print("building placed")
+		buildingPlacment[plane_position.x][plane_position.z] = global.currentBuilding
 		building.global_position = plane_position
 		# Add the TextureRect to the scene
 		add_child(building)
