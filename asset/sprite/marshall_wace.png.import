@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcv7ybcvb3a6d"
-path="res://.godot/imported/residential.png-a3b4cd93bba299079a1685609ed4bafb.ctex"
+uid="uid://dvfgxf3hvvuvl"
+path="res://.godot/imported/marshall_wace.png-4eb1472b687e1b7c64b3dd36271b2ee6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/sprite/residential.png"
-dest_files=["res://.godot/imported/residential.png-a3b4cd93bba299079a1685609ed4bafb.ctex"]
+source_file="res://asset/sprite/marshall_wace.png"
+dest_files=["res://.godot/imported/marshall_wace.png-4eb1472b687e1b7c64b3dd36271b2ee6.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcv7ybcvb3a6d"
-path="res://.godot/imported/residential.png-a3b4cd93bba299079a1685609ed4bafb.ctex"
+uid="uid://bla67jusrl6n4"
+path="res://.godot/imported/easy_charts.svg-5963eccbc8d55a9c4bb3a7a394bde2c4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/sprite/residential.png"
-dest_files=["res://.godot/imported/residential.png-a3b4cd93bba299079a1685609ed4bafb.ctex"]
+source_file="res://easy_charts.svg"
+dest_files=["res://.godot/imported/easy_charts.svg-5963eccbc8d55a9c4bb3a7a394bde2c4.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

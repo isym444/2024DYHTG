@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcv7ybcvb3a6d"
-path="res://.godot/imported/residential.png-a3b4cd93bba299079a1685609ed4bafb.ctex"
+uid="uid://bji5nulqt4xpr"
+path="res://.godot/imported/wind_turbine.png-7ccf3f76442c423a99d25eef4e888b19.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/sprite/residential.png"
-dest_files=["res://.godot/imported/residential.png-a3b4cd93bba299079a1685609ed4bafb.ctex"]
+source_file="res://asset/sprite/wind_turbine.png"
+dest_files=["res://.godot/imported/wind_turbine.png-7ccf3f76442c423a99d25eef4e888b19.ctex"]
 
 [params]
 

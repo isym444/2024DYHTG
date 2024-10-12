@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcv7ybcvb3a6d"
-path="res://.godot/imported/residential.png-a3b4cd93bba299079a1685609ed4bafb.ctex"
+uid="uid://c0pyppf5438ge"
+path="res://.godot/imported/oil_pump.png-37c22b4ba13baaf56f3cbadacfebdc55.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/sprite/residential.png"
-dest_files=["res://.godot/imported/residential.png-a3b4cd93bba299079a1685609ed4bafb.ctex"]
+source_file="res://asset/sprite/oil_pump.png"
+dest_files=["res://.godot/imported/oil_pump.png-37c22b4ba13baaf56f3cbadacfebdc55.ctex"]
 
 [params]
 
