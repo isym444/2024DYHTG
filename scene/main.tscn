@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://dn6djpofrcwko"]
+[gd_scene load_steps=4 format=3 uid="uid://dn6djpofrcwko"]
 
 [ext_resource type="Script" path="res://script/main.gd" id="1_sv0h2"]
 [ext_resource type="Texture2D" uid="uid://7rqounoht2cq" path="res://assest/sprite/selector.png" id="2_sdq3r"]
+
+[sub_resource type="Environment" id="Environment_cvtbx"]
+background_mode = 1
+background_color = Color(0.441725, 0.722566, 0.433844, 1)
 
 [node name="main" type="Node3D" node_paths=PackedStringArray("selector", "view_camera")]
 script = ExtResource("1_sv0h2")
@@ -18,4 +22,5 @@ texture = ExtResource("2_sdq3r")
 
 [node name="Camera3D" type="Camera3D" parent="view"]
 transform = Transform3D(0.707107, -0.40558, 0.579228, 0, 0.819152, 0.573576, -0.707107, -0.40558, 0.579228, 30, 30, 30)
+environment = SubResource("Environment_cvtbx")
 fov = 20.0
