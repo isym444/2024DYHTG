@@ -191,6 +191,8 @@ func _ready() -> void:
 
 var time_passed = 0.0 #in seconds
 
+var health_above_200 = 1
+
 # Called every frame. 'delta' is the elapsed time since the previous frame
 func _process(delta: float) -> void:
 	time_passed += delta
@@ -236,9 +238,13 @@ func _process(delta: float) -> void:
 		if(world_health<200):
 			people-=100
 		
-		if(world_health<200):
+		if(health_above_200==0 && world_health>200):
+			health_above_200=1
+		
+		if(world_health<200 && health_above_200==1):
 		#print("time passed")
 			show_popup("Careful, your health is getting low!")
+			health_above_200=0
 		
 		#resources values updates
 		money+=money_per_time
