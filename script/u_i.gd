@@ -21,7 +21,6 @@ func update_text_labels() -> void:
 	people_label.text = "People: " + str(global.people)
 	oil_label.text = "Oil: " + str(global.oil)
 	energy_label.text = "Energy: " + str(global.energy)
-	materials_label.text = "Materials: " + str(global.materials)
 	
 func _on_add_residential_pressed() -> void:
 	global.currentBuilding = 0
