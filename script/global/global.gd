@@ -12,12 +12,19 @@ const materials_factory_cost = 3000000
 const wind_turbine_building_cost = 3000000
 const forest_building_cost = 3000000
 
+const bank_building_materials_cost = 25
+const apartment_building_materials_cost = 25
+const oil_pump_building_materials_cost = 25
+const materials_factory_materials_cost = 25
+const wind_turbine_materials_cost = 25
+const forest_building_materials_cost = 25
+
 #Resources
 var money = 10000000 #GBP (10 million) #money can go down as non-residential buildings cost money to operate so they can operate at deficit if you don't sell your oil/energy or price of sell is too low
 var energy = 2400 #GW (100GWh average forc city so nough for 24h)
 var oil = 5 #MB millions of barrels USA produces 11 MBPD
 var materials = 100 #building units (each building requires different amount of materials)
-var people = 10
+var people = 0
 var world_health = 1000 #in arbitrary units
 var time_survived = 0 #in seconds
 
@@ -42,6 +49,7 @@ func add_bank(x_value, y_value, z_value, risk_tolerance_value: bankState)->void:
 	new_bank["z"] = z_value
 	new_bank["risk_tolerance"] = risk_tolerance_value
 	banks.append(new_bank)
+	materials-=bank_building_materials_cost
 	world_health-=50
 var risk_performance_map = {bankState.CONSERVATIVE:0, bankState.RISKY:0, bankState.YOLO:0}
 
@@ -65,29 +73,50 @@ func new_building_helper(x_value, y_value, z_value)->Dictionary:
 	return new_building
 
 func add_apartment_building(x_value, y_value, z_value)->void:
-	if(money-apartment_building_cost<0):
+	if(money-apartment_building_cost<0 || materials-apartment_building_materials_cost<0):
 		#LUCA TO ADD SIGNAL
 		return
 	var new_building=new_building_helper(x_value, y_value, z_value)
 	apartment_buildings.append(new_building)
 	people+=100
 	world_health-=50
+	materials-=apartment_building_materials_cost
 	
 func add_oil_pumps(x_value, y_value, z_value)->void:
-	if(money-oil_pump_building_cost<0):
+	if(money-oil_pump_building_cost<0 || materials-oil_pump_building_materials_cost<0):
 		#LUCA TO ADD SIGNAL
 		return
 	var new_building=new_building_helper(x_value, y_value, z_value)
 	oil_pumps.append(new_building)
 	world_health-=20
+	materials-=oil_pump_building_materials_cost
 	
 func add_materials_factories(x_value, y_value, z_value)->void:
-	if(money-materials_factory_cost<0):
+	if(money-materials_factory_cost<0 || materials-materials_factory_materials_cost<0):
 		#LUCA TO ADD SIGNAL
 		return
 	var new_building=new_building_helper(x_value, y_value, z_value)
 	materials_factories.append(new_building)
 	world_health-=100
+	materials-=materials_factory_materials_cost
+
+func add_wind_turbine(x_value, y_value, z_value)->void:
+	if(money-wind_turbine_building_cost<0 || materials-wind_turbine_materials_cost<0):
+		#LUCA TO ADD SIGNAL
+		return
+	var new_building=new_building_helper(x_value, y_value, z_value)
+	materials_factories.append(new_building)
+	world_health-=100
+	materials-=wind_turbine_materials_cost
+	
+func add_forest(x_value, y_value, z_value)->void:
+	if(money-forest_building_cost<0 || materials-forest_building_materials_cost<0):
+		#LUCA TO ADD SIGNAL
+		return
+	var new_building=new_building_helper(x_value, y_value, z_value)
+	materials_factories.append(new_building)
+	world_health-=100
+	materials-=forest_building_materials_cost
 
 #Actions
 var times_ocean_cleaned = 0 
