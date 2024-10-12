@@ -23,7 +23,7 @@ const forest_building_materials_cost = 25
 var money = 10000000 #GBP (10 million) #money can go down as non-residential buildings cost money to operate so they can operate at deficit if you don't sell your oil/energy or price of sell is too low
 var energy = 2400 #GW (100GWh average forc city so nough for 24h)
 var oil = 5 #MB millions of barrels USA produces 11 MBPD
-var materials = 100 #building units (each building requires different amount of materials)
+#var materials = 100 #building units (each building requires different amount of materials)
 var people = 0
 var world_health = 1000 #in arbitrary units
 var time_survived = 0 #in seconds
@@ -40,7 +40,8 @@ var bank_template = {
 }
 var banks = [] #array of dictionaries {"x":-10,"y":8,"z":3, "risk_tolerance":bankState}
 func add_bank(x_value, y_value, z_value, risk_tolerance_value: bankState)->void:
-	if(money-bank_building_cost<0 || materials-bank_building_materials_cost<0):
+	#if(money-bank_building_cost<0 || materials-bank_building_materials_cost<0):
+	if(money-bank_building_cost<0):
 		show_popup("You don't have enough money or materials to build this!")
 		return
 	var new_bank = bank_template.duplicate() # Duplicate the template to avoid modifying the original
@@ -49,7 +50,7 @@ func add_bank(x_value, y_value, z_value, risk_tolerance_value: bankState)->void:
 	new_bank["z"] = z_value
 	new_bank["risk_tolerance"] = risk_tolerance_value
 	banks.append(new_bank)
-	materials-=bank_building_materials_cost
+	#materials-=bank_building_materials_cost
 	money-=bank_building_cost
 	world_health-=50
 var risk_performance_map = {bankState.CONSERVATIVE:0, bankState.RISKY:0, bankState.YOLO:0}
@@ -74,54 +75,54 @@ func new_building_helper(x_value, y_value, z_value)->Dictionary:
 	return new_building
 
 func add_apartment_building(x_value, y_value, z_value)->void:
-	if(money-apartment_building_cost<0 || materials-apartment_building_materials_cost<0):
+	if(money-apartment_building_cost<0):
 		show_popup("You don't have enough money or materials to build this!")
 		return
 	var new_building=new_building_helper(x_value, y_value, z_value)
 	apartment_buildings.append(new_building)
 	people+=100
 	world_health-=50
-	materials-=apartment_building_materials_cost
+	#materials-=apartment_building_materials_cost
 	money-=apartment_building_cost
 	
 func add_oil_pumps(x_value, y_value, z_value)->void:
-	if(money-oil_pump_building_cost<0 || materials-oil_pump_building_materials_cost<0):
+	if(money-oil_pump_building_cost<0):
 		show_popup("You don't have enough money or materials to build this!")
 		return
 	var new_building=new_building_helper(x_value, y_value, z_value)
 	oil_pumps.append(new_building)
 	world_health-=20
-	materials-=oil_pump_building_materials_cost
+	#materials-=oil_pump_building_materials_cost
 	money-=oil_pump_building_cost
 	
 func add_materials_factories(x_value, y_value, z_value)->void:
-	if(money-materials_factory_cost<0 || materials-materials_factory_materials_cost<0):
+	if(money-materials_factory_cost<0):
 		show_popup("You don't have enough money or materials to build this!")
 		return
 	var new_building=new_building_helper(x_value, y_value, z_value)
 	materials_factories.append(new_building)
 	world_health-=100
-	materials-=materials_factory_materials_cost
+	#materials-=materials_factory_materials_cost
 	money-=materials_factory_cost
 
 func add_wind_turbine(x_value, y_value, z_value)->void:
-	if(money-wind_turbine_building_cost<0 || materials-wind_turbine_materials_cost<0):
+	if(money-wind_turbine_building_cost<0):
 		show_popup("You don't have enough money or materials to build this!")
 		return
 	var new_building=new_building_helper(x_value, y_value, z_value)
 	materials_factories.append(new_building)
 	world_health-=100
-	materials-=wind_turbine_materials_cost
+	#materials-=wind_turbine_materials_cost
 	money-=wind_turbine_building_cost
 	
 func add_forest(x_value, y_value, z_value)->void:
-	if(money-forest_building_cost<0 || materials-forest_building_materials_cost<0):
+	if(money-forest_building_cost<0):
 		show_popup("You don't have enough money or materials to build this!")
 		return
 	var new_building=new_building_helper(x_value, y_value, z_value)
 	materials_factories.append(new_building)
 	world_health-=100
-	materials-=forest_building_materials_cost
+	#materials-=forest_building_materials_cost
 	money-=forest_building_cost
 
 #Actions
@@ -183,10 +184,10 @@ func sell_oil() -> void:
 		money+=energy_price
 		oil-=1
 
-func sell_materials() -> void:
-	if(materials>0):
-		money+=materials_price
-		materials-=1
+#func sell_materials() -> void:
+	#if(materials>0):
+		#money+=materials_price
+		#materials-=1
 
 func sell_energy() -> void:
 	if(energy>0):
@@ -286,7 +287,7 @@ func _process(delta: float) -> void:
 		#resources values updates
 		money+=money_per_time
 		oil+=oil_per_time
-		materials+=materials_per_time
+		#materials+=materials_per_time
 		energy+=energy_per_time
 		
 
