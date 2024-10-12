@@ -182,6 +182,14 @@ func _process(delta: float) -> void:
 		materials_per_time = materials_factories.size()*materials_per_factory
 		energy_per_time = wind_turbines.size()*energy_per_turbine
 		
+		#update money based on operating costs of buildings
+		money-=oil_pumps.size()*100
+		money-=materials_factories.size()*100
+		money-=wind_turbines.size()*10
+		
+		#update money based on taxes from people
+		money+=people
+		
 		for bank in banks:
 			#update risk tolerance
 			risk_performance_map[bank.risk_tolerance]=getUpdatedPerformance(bank.risk_tolerance)
