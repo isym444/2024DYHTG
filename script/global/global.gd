@@ -31,7 +31,8 @@ var time_survived = 0 #in seconds
 enum bankState {CONSERVATIVE, RISKY, YOLO}
 
 #Buildings
-var currentBuilding:int = 0
+var currentBuilding:int = 0 # indicates the current building selected
+signal cantBuild #used to determine if a buiding can be built
 var bank_template = {
 	"x": null, 
 	"y": null, 
@@ -76,7 +77,7 @@ func new_building_helper(x_value, y_value, z_value)->Dictionary:
 
 func add_apartment_building(x_value, y_value, z_value)->void:
 	if(money-apartment_building_cost<0):
-		show_popup("You don't have enough money or materials to build this!")
+		show_popup("You don't have enough money to build this!")
 		return
 	var new_building=new_building_helper(x_value, y_value, z_value)
 	apartment_buildings.append(new_building)
@@ -87,7 +88,7 @@ func add_apartment_building(x_value, y_value, z_value)->void:
 	
 func add_oil_pumps(x_value, y_value, z_value)->void:
 	if(money-oil_pump_building_cost<0):
-		show_popup("You don't have enough money or materials to build this!")
+		show_popup("You don't have enough money to build this!")
 		return
 	var new_building=new_building_helper(x_value, y_value, z_value)
 	oil_pumps.append(new_building)
@@ -97,7 +98,7 @@ func add_oil_pumps(x_value, y_value, z_value)->void:
 	
 func add_materials_factories(x_value, y_value, z_value)->void:
 	if(money-materials_factory_cost<0):
-		show_popup("You don't have enough money or materials to build this!")
+		show_popup("You don't have enough money to build this!")
 		return
 	var new_building=new_building_helper(x_value, y_value, z_value)
 	materials_factories.append(new_building)
@@ -107,7 +108,7 @@ func add_materials_factories(x_value, y_value, z_value)->void:
 
 func add_wind_turbine(x_value, y_value, z_value)->void:
 	if(money-wind_turbine_building_cost<0):
-		show_popup("You don't have enough money or materials to build this!")
+		show_popup("You don't have enough money to build this!")
 		return
 	var new_building=new_building_helper(x_value, y_value, z_value)
 	materials_factories.append(new_building)
@@ -117,7 +118,7 @@ func add_wind_turbine(x_value, y_value, z_value)->void:
 	
 func add_forest(x_value, y_value, z_value)->void:
 	if(money-forest_building_cost<0):
-		show_popup("You don't have enough money or materials to build this!")
+		show_popup("You don't have enough money to build this!")
 		return
 	var new_building=new_building_helper(x_value, y_value, z_value)
 	materials_factories.append(new_building)
@@ -205,6 +206,7 @@ var popup_scene = preload("res://scene/popuptest.tscn")
 var popup_instance
 func show_popup(text: String):
 	# Center the popup on the screen
+	cantBuild.emit()
 	popup_instance.popup_centered()
 	popup_instance.show()  # Manually show it
 	print("popup being shown")

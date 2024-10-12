@@ -7,10 +7,13 @@ var bounds = 10
 var plane:Plane # Used for raycasting mouse
 var plane_position #used for getting coord
 
+var buildingPlacment = []
+var canBuild = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	plane = Plane(Vector3.UP, Vector3.ZERO)
+	global.cantBuild.connect(blockBuild)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -24,6 +27,7 @@ func _process(delta):
 
 func _input(event):
 	if(Input.is_action_just_pressed("click")):
+		print(canBuild)
 		#check for placment conditions
 		if(plane_position.x < -bounds or plane_position.x > bounds or plane_position.z < -bounds or plane_position.z > bounds):
 			print("out of bounds")
@@ -49,7 +53,16 @@ func _input(event):
 			5:
 				building = load("res://scene/building/windTurbine.tscn").instantiate()
 				global.add_wind_turbine(plane_position.x,plane_position.y,plane_position.z)
-
+		
+		if(canBuild==false): #making building block once popup alert is triggered
+			canBuild = true
+			return
+		print("building placed")
 		building.global_position = plane_position
 		# Add the TextureRect to the scene
 		add_child(building)
+
+
+func blockBuild():
+	print("building blocked")
+	canBuild = false
