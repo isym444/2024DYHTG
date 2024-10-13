@@ -5,6 +5,7 @@ extends Control
 @onready var oilPlotContainer = %VBoxContainer/oilPlot
 @onready var energyPlotContainer = %VBoxContainer/energyPlot
 
+
 # Called when the node is added to the scene
 func _ready():
 	pass

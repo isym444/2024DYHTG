@@ -23,6 +23,7 @@ const forest_building_materials_cost = 25
 const personPerRes = 10
 
 #Resources
+var dashboardVis=false
 var money = 10000000 #GBP (10 million) #money can go down as non-residential buildings cost money to operate so they can operate at deficit if you don't sell your oil/energy or price of sell is too low
 var energy = 2400 #GW (100GWh average forc city so nough for 24h)
 var oil = 5 #MB millions of barrels USA produces 11 MBPD
@@ -139,7 +140,9 @@ func add_forest(x_value, y_value, z_value)->void:
 	environmentalIndex = update_environmentalIndex()
 
 func update_environmentalIndex()->float:
-	var index_val = oil_pumps.size() / (forests.size() + wind_turbines.size())
+	var index_val=0
+	if(forests.size()+wind_turbines.size()>0):
+		index_val = oil_pumps.size() / (forests.size() + wind_turbines.size())
 	return index_val
 
 #Actions

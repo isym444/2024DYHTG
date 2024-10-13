@@ -47,3 +47,7 @@ func _on_add_wind_pressed() -> void:
 func _button_build_logic(buildableState):
 	lastState = buildableState
 	global.canBuild = buildableState
+
+
+func _dashboard_toggle() -> void:
+	global.dashboardVis = not(global.dashboardVis)
