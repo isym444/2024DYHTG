@@ -7,7 +7,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if %AudioStreamPlayer.playing == false:
+		%AudioStreamPlayer.play()
 
 
 func _on_play_button_pressed():
