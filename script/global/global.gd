@@ -122,7 +122,7 @@ func add_wind_turbine(x_value, y_value, z_value)->void:
 		show_popup("You don't have enough money to build this!")
 		return
 	var new_building=new_building_helper(x_value, y_value, z_value)
-	materials_factories.append(new_building)
+	wind_turbines.append(new_building)
 	world_health-=100
 	#materials-=wind_turbine_materials_cost
 	money-=wind_turbine_building_cost
@@ -133,7 +133,7 @@ func add_forest(x_value, y_value, z_value)->void:
 		show_popup("You don't have enough money to build this!")
 		return
 	var new_building=new_building_helper(x_value, y_value, z_value)
-	materials_factories.append(new_building)
+	forests.append(new_building)
 	world_health-=100
 	#materials-=forest_building_materials_cost
 	money-=forest_building_cost
@@ -217,10 +217,13 @@ func sell_energy() -> void:
 		
 func update_world_health() -> void:
 	world_health-=oil_pumps.size()*20
-	world_health-=apartment_buildings.size()
-	world_health-=materials_factories.size()*10
-	world_health-=banks.size()
-	world_health+=forests.size()
+	world_health-=apartment_buildings.size()*10
+	#world_health-=materials_factories.size()*10
+	#world_health-=banks.size()
+	world_health+=forests.size()*10
+	world_health+=wind_turbines.size()*10
+	if(world_health>1000):
+		world_health=1000
 
 var popup_scene = preload("res://scene/popuptest.tscn")
 var popup_instance
