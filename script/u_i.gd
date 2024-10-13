@@ -42,12 +42,16 @@ func _on_add_forest_pressed() -> void:
 
 func _on_add_wind_pressed() -> void:
 	global.currentBuilding = 5
-
+	
+func _on_sell_oil_pressed() -> void:
+	global.sellOilFlag = true
+	
+func on_sell_energy_pressed() ->void:
+	global.sellEnergyFlag = true
 
 func _button_build_logic(buildableState):
 	lastState = buildableState
 	global.canBuild = buildableState
-
 
 func _dashboard_toggle() -> void:
 	global.dashboardVis = not(global.dashboardVis)

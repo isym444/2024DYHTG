@@ -24,6 +24,8 @@ const personPerRes = 10
 
 #Resources
 var dashboardVis=false
+var sellOilFlag = false
+var sellEnergyFlag = false
 var money = 10000000 #GBP (10 million) #money can go down as non-residential buildings cost money to operate so they can operate at deficit if you don't sell your oil/energy or price of sell is too low
 var energy = 2400 #GW (100GWh average forc city so nough for 24h)
 var oil = 5 #MB millions of barrels USA produces 11 MBPD
@@ -180,6 +182,12 @@ func update_comodities()->void:
 	energy_price = max(normal_distribution(500000,abs(average))*100,0) #income for selling 1GWH your energy at a particular time
 	oil_price = max(normal_distribution(500000,abs(average))*100,0) #income from selling 1MB
 	materials_price = max(normal_distribution(500000,abs(average))*100,0) #income from selling 1 unit of materials
+	
+	if sellOilFlag == true:
+		sell_oil()
+		
+	if sellEnergyFlag == true:
+		sell_energy()
 
 #Deltas
 var money_per_time = 0 #from bank investment performance (n.b. extra money will come from selling oil/energy/materials)
@@ -204,6 +212,7 @@ func sell_oil() -> void:
 	if(oil>0):
 		money+=energy_price
 		oil-=1
+		sellOilFlag = false
 
 #func sell_materials() -> void:
 	#if(materials>0):
@@ -212,8 +221,9 @@ func sell_oil() -> void:
 
 func sell_energy() -> void:
 	if(energy>0):
-		money+=materials_price
+		money+=energy_price
 		energy-=50
+		sellEnergyFlag = false
 		
 func update_world_health() -> void:
 	world_health-=oil_pumps.size()*20
