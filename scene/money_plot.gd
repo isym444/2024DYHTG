@@ -10,7 +10,7 @@ var graph_height: int = 159
 var y_values: Array = [gmon]  # Example with a variety of values
 
 # Calculate the number of points (up to 5 values)
-var num_points: int = 12
+var num_points: int = 38
 
 # Spacing between points on the X-axis, adjusted for up to 5 values
 var x_spacing: float = (graph_width - 50) / float(num_points - 1)  # Subtracting the offset for better spacing
@@ -77,6 +77,6 @@ func _process(delta):
 	time += delta
 	if time > 5:
 		time = 0
-		if y_values.size() > 10:
+		if y_values.size() > 36:
 			y_values.pop_front()
 		y_values.append(global.money)
