@@ -28,6 +28,11 @@ var people = 0
 var world_health = 1000 #in arbitrary units
 var time_survived = 0 #in seconds
 
+# Things that users actions will alter in this script
+# that we want to plot
+var volatilityIndex = 1
+var environmentalIndex = 1
+
 enum bankState {CONSERVATIVE, RISKY, YOLO}
 
 #Buildings
@@ -96,6 +101,7 @@ func add_oil_pumps(x_value, y_value, z_value)->void:
 	world_health-=20
 	#materials-=oil_pump_building_materials_cost
 	money-=oil_pump_building_cost
+	environmentalIndex = update_environmentalIndex()
 	
 func add_materials_factories(x_value, y_value, z_value)->void:
 	if(money-materials_factory_cost<0):
@@ -116,6 +122,7 @@ func add_wind_turbine(x_value, y_value, z_value)->void:
 	world_health-=100
 	#materials-=wind_turbine_materials_cost
 	money-=wind_turbine_building_cost
+	environmentalIndex = update_environmentalIndex()
 	
 func add_forest(x_value, y_value, z_value)->void:
 	if(money-forest_building_cost<0):
@@ -126,6 +133,11 @@ func add_forest(x_value, y_value, z_value)->void:
 	world_health-=100
 	#materials-=forest_building_materials_cost
 	money-=forest_building_cost
+	environmentalIndex = update_environmentalIndex()
+
+func update_environmentalIndex()->float:
+	var index_val = oil_pumps.size() / (forests.size() + wind_turbines.size())
+	return index_val
 
 #Actions
 var times_ocean_cleaned = 0 
@@ -155,6 +167,7 @@ func update_comodities()->void:
 	#average of bank absolute performances is a proxy/indicator of overall volatility i.e. high volatility -> more skewed/extreme average -> can be used to set SD of normal distribution function that determines commodity prices
 	if(banks.size()>0):
 		average=total/banks.size()
+		volatilityIndex = average
 	
 	#if your average bank performance is too extreme (further away from 0), then your commodity prices will also be extreme i.e. use it to update your normal distribution S.D.s
 	#maximum possible abs(average) will be 2500 so want to *100 and make it never go below 0

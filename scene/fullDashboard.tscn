@@ -1,9 +1,66 @@
-[gd_scene format=3 uid="uid://cie5mbypk1vfa"]
+[gd_scene load_steps=2 format=3 uid="uid://cie5mbypk1vfa"]
+
+[ext_resource type="Script" path="res://script/fullDashboard.gd" id="1_hkrr8"]
 
 [node name="FullDashboard" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -4.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_hkrr8")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(1150, 325)
+layout_mode = 2
+
+[node name="peoplePlotFull" type="Control" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(285, 325)
+layout_mode = 2
+
+[node name="moneyPlotFull" type="Control" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(285, 325)
+layout_mode = 2
+
+[node name="oilPlotFull" type="Control" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(285, 325)
+layout_mode = 2
+
+[node name="energyPlotFull" type="Control" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(285, 325)
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(1150, 325)
+layout_mode = 2
+
+[node name="volatilityPlotFull" type="Control" parent="VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(285, 325)
+layout_mode = 2
+
+[node name="materialsPlotFull" type="Control" parent="VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(285, 325)
+layout_mode = 2
+
+[node name="worldHealthPlotFull" type="Control" parent="VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(285, 325)
+layout_mode = 2
+
+[node name="environmentalIndexPlotFull" type="Control" parent="VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(285, 325)
+layout_mode = 2

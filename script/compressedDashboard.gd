@@ -1,11 +1,10 @@
-extends Node
+extends Control
 
+@onready var peoplePlotContainer = %VBoxContainer/peoplePlot
+@onready var moneyPlotContainer = %VBoxContainer/moneyPlot
+@onready var oilPlotContainer = %VBoxContainer/oilPlot
+@onready var energyPlotContainer = %VBoxContainer/energyPlot
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+# Called when the node is added to the scene
+func _ready():
 	pass
