@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://dwfclmo2spaes"]
+[gd_scene load_steps=10 format=3 uid="uid://dwfclmo2spaes"]
 
 [ext_resource type="Script" path="res://script/fullDashboard.gd" id="1_hkrr8"]
 [ext_resource type="Script" path="res://scene/money_plot_full.gd" id="2_gktek"]
+[ext_resource type="Script" path="res://scene/people_plot_full.gd" id="2_yk03f"]
+[ext_resource type="Script" path="res://scene/oil_plot_full.gd" id="4_lmtvv"]
+[ext_resource type="Script" path="res://scene/energy_plot_full.gd" id="5_opmtf"]
+[ext_resource type="Script" path="res://scene/volatility_plot_full.gd" id="6_7hcwm"]
+[ext_resource type="Script" path="res://scene/materials_plot_full.gd" id="7_aqf82"]
+[ext_resource type="Script" path="res://scene/world_health_plot_full.gd" id="8_dteb2"]
+[ext_resource type="Script" path="res://scene/environmental_index_plot_full.gd" id="9_el8af"]
 
 [node name="FullDashboard" type="Control"]
 layout_mode = 3
@@ -26,6 +33,19 @@ layout_mode = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(285, 325)
 layout_mode = 2
+script = ExtResource("2_yk03f")
+
+[node name="peopleLabel" type="Label" parent="VBoxContainer/HBoxContainer/peoplePlotFull"]
+modulate = Color(0.425571, 0.425571, 0.425571, 1)
+custom_minimum_size = Vector2(285, 325)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 43
+text = "People
+"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="moneyPlotFull" type="Control" parent="VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
@@ -33,15 +53,59 @@ custom_minimum_size = Vector2(285, 325)
 layout_mode = 2
 script = ExtResource("2_gktek")
 
+[node name="moneyLabel" type="Label" parent="VBoxContainer/HBoxContainer/moneyPlotFull"]
+modulate = Color(0.425571, 0.425571, 0.425571, 1)
+custom_minimum_size = Vector2(285, 325)
+layout_mode = 2
+offset_left = 5.0
+offset_top = -3.0
+offset_right = 290.0
+offset_bottom = 322.0
+theme_override_font_sizes/font_size = 43
+text = "Money
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="oilPlotFull" type="Control" parent="VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(285, 325)
 layout_mode = 2
+script = ExtResource("4_lmtvv")
+
+[node name="oilLabel" type="Label" parent="VBoxContainer/HBoxContainer/oilPlotFull"]
+modulate = Color(0.425571, 0.425571, 0.425571, 1)
+custom_minimum_size = Vector2(285, 325)
+layout_mode = 2
+offset_left = -2.0
+offset_top = 2.0
+offset_right = 283.0
+offset_bottom = 327.0
+theme_override_font_sizes/font_size = 43
+text = "Oil
+"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="energyPlotFull" type="Control" parent="VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(285, 325)
 layout_mode = 2
+script = ExtResource("5_opmtf")
+
+[node name="energyLabel" type="Label" parent="VBoxContainer/HBoxContainer/energyPlotFull"]
+modulate = Color(0.425571, 0.425571, 0.425571, 1)
+custom_minimum_size = Vector2(285, 325)
+layout_mode = 2
+offset_left = -3.0
+offset_top = 1.0
+offset_right = 282.0
+offset_bottom = 326.0
+theme_override_font_sizes/font_size = 43
+text = "Energy
+"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(1150, 325)
@@ -51,18 +115,83 @@ layout_mode = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(285, 325)
 layout_mode = 2
+script = ExtResource("6_7hcwm")
+
+[node name="volatilityIndexLabel" type="Label" parent="VBoxContainer/HBoxContainer2/volatilityPlotFull"]
+modulate = Color(0.425571, 0.425571, 0.425571, 1)
+custom_minimum_size = Vector2(285, 325)
+layout_mode = 2
+anchor_left = 2.028
+anchor_top = -0.012
+anchor_right = 2.028
+anchor_bottom = -0.012
+offset_left = -574.98
+offset_top = 3.9
+offset_right = -289.98
+offset_bottom = 328.9
+theme_override_font_sizes/font_size = 43
+text = "Volatility
+Index
+"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="materialsPlotFull" type="Control" parent="VBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(285, 325)
 layout_mode = 2
+script = ExtResource("7_aqf82")
+
+[node name="materialsLabel" type="Label" parent="VBoxContainer/HBoxContainer2/materialsPlotFull"]
+modulate = Color(0.425571, 0.425571, 0.425571, 1)
+custom_minimum_size = Vector2(285, 325)
+layout_mode = 2
+offset_left = 1.0
+offset_right = 286.0
+offset_bottom = 325.0
+theme_override_font_sizes/font_size = 43
+text = "Materials
+"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="worldHealthPlotFull" type="Control" parent="VBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(285, 325)
 layout_mode = 2
+script = ExtResource("8_dteb2")
+
+[node name="worldHealthLabel" type="Label" parent="VBoxContainer/HBoxContainer2/worldHealthPlotFull"]
+modulate = Color(0.425571, 0.425571, 0.425571, 1)
+custom_minimum_size = Vector2(285, 325)
+layout_mode = 2
+offset_top = -1.0
+offset_right = 285.0
+offset_bottom = 324.0
+theme_override_font_sizes/font_size = 43
+text = "World 
+Health
+"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="environmentalIndexPlotFull" type="Control" parent="VBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(285, 325)
 layout_mode = 2
+script = ExtResource("9_el8af")
+
+[node name="environmentalIndexLabel" type="Label" parent="VBoxContainer/HBoxContainer2/environmentalIndexPlotFull"]
+modulate = Color(0.425571, 0.425571, 0.425571, 1)
+custom_minimum_size = Vector2(285, 325)
+layout_mode = 2
+offset_left = 1.0
+offset_top = 3.0
+offset_right = 286.0
+offset_bottom = 328.0
+theme_override_font_sizes/font_size = 37
+text = "Environmental
+Index
+"
+horizontal_alignment = 1
+vertical_alignment = 1
