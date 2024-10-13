@@ -65,10 +65,23 @@ func _input(event):
 				global.add_apartment_building(plane_position.x,plane_position.y,plane_position.z)
 			1:
 				building = load("res://scene/building/investmentBank.tscn").instantiate()
-				global.add_bank(plane_position.x,plane_position.y,plane_position.z,global.bankState.RISKY)
+				var ti = randi_range(1, 10)
+				if(ti<3):
+					global.add_bank(plane_position.x,plane_position.y,plane_position.z,global.bankState.CONSERVATIVE)
+				if(ti<7):
+					global.add_bank(plane_position.x,plane_position.y,plane_position.z,global.bankState.RISKY)
+				else:
+					global.add_bank(plane_position.x,plane_position.y,plane_position.z,global.bankState.YOLO)
 			2:
 				building = load("res://scene/building/marshallWace.tscn").instantiate()
-				global.add_bank(plane_position.x,plane_position.y,plane_position.z,global.bankState.RISKY)
+				#global.add_bank(plane_position.x,plane_position.y,plane_position.z,global.bankState.RISKY)
+				var ti2 = randi_range(1, 10)
+				if(ti2<3):
+					global.add_bank(plane_position.x,plane_position.y,plane_position.z,global.bankState.CONSERVATIVE)
+				if(ti2<7):
+					global.add_bank(plane_position.x,plane_position.y,plane_position.z,global.bankState.RISKY)
+				else:
+					global.add_bank(plane_position.x,plane_position.y,plane_position.z,global.bankState.YOLO)
 			3:
 				building = load("res://scene/building/oilPump.tscn").instantiate()
 				global.add_oil_pumps(plane_position.x,plane_position.y,plane_position.z)

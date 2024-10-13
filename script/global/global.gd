@@ -230,7 +230,7 @@ func update_world_health() -> void:
 	world_health-=oil_pumps.size()*20
 	world_health-=apartment_buildings.size()*10
 	#world_health-=materials_factories.size()*10
-	#world_health-=banks.size()
+	world_health-=banks.size()*20
 	world_health+=forests.size()*10
 	world_health+=wind_turbines.size()*10
 	if(world_health>1000):
