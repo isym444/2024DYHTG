@@ -10,6 +10,8 @@
 [ext_resource type="Script" path="res://scene/progress_bar.gd" id="8_o0e3q"]
 [ext_resource type="Script" path="res://scene/texture_progress_bar.gd" id="9_0kd4g"]
 [ext_resource type="Texture2D" uid="uid://dkqgvhpcy22r7" path="res://asset/images/clean-white-business-card-without-background-template-mockup_946657-19868 copy.jpg" id="9_5kne3"]
+[ext_resource type="Texture2D" uid="uid://ik4pps4wggmt" path="res://asset/images/oilbarrels-removebg-preview.png" id="8_7erwj"]
+[ext_resource type="Texture2D" uid="uid://b4yledhv7s00l" path="res://asset/images/electricity.png" id="9_pymc1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eop31"]
 
@@ -19,6 +21,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 2.0
+offset_right = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_21u8a")
@@ -206,6 +210,46 @@ turbine"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 203.0
+offset_right = 258.0
+offset_bottom = 144.0
+
+[node name="sellOil" type="Button" parent="VBoxContainer2"]
+custom_minimum_size = Vector2(55, 70)
+layout_mode = 2
+icon = ExtResource("8_7erwj")
+expand_icon = true
+
+[node name="sellEnergy" type="Button" parent="VBoxContainer2"]
+custom_minimum_size = Vector2(55, 70)
+layout_mode = 2
+icon = ExtResource("9_pymc1")
+expand_icon = true
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(50, 140)
+layout_mode = 0
+offset_left = 261.0
+offset_right = 311.0
+offset_bottom = 143.0
+
+[node name="Label" type="Label" parent="VBoxContainer3"]
+custom_minimum_size = Vector2(50, 70)
+layout_mode = 2
+text = "Sell oil"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer3"]
+custom_minimum_size = Vector2(50, 70)
+layout_mode = 2
+text = "Sell
+energy"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="mouse_entered" from="HBoxContainer/addResidential" to="." method="_button_build_logic" flags=6 binds= [false]]
 [connection signal="mouse_exited" from="HBoxContainer/addResidential" to="." method="_button_build_logic" binds= [true]]
 [connection signal="pressed" from="HBoxContainer/addResidential" to="." method="_on_add_residential_pressed"]
@@ -227,3 +271,9 @@ vertical_alignment = 1
 [connection signal="mouse_entered" from="HBoxContainer/openDashboard" to="." method="_button_build_logic" binds= [true]]
 [connection signal="mouse_exited" from="HBoxContainer/openDashboard" to="." method="_button_build_logic" binds= [false]]
 [connection signal="pressed" from="HBoxContainer/openDashboard" to="." method="_dashboard_toggle"]
+[connection signal="mouse_entered" from="VBoxContainer2/sellOil" to="." method="_button_build_logic" binds= [false]]
+[connection signal="mouse_exited" from="VBoxContainer2/sellOil" to="." method="_button_build_logic" binds= [false]]
+[connection signal="pressed" from="VBoxContainer2/sellOil" to="." method="_on_sell_oil_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer2/sellEnergy" to="." method="_button_build_logic" binds= [false]]
+[connection signal="mouse_exited" from="VBoxContainer2/sellEnergy" to="." method="_button_build_logic" binds= [false]]
+[connection signal="pressed" from="VBoxContainer2/sellEnergy" to="." method="on_sell_energy_pressed"]
