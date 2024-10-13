@@ -172,7 +172,7 @@ func update_comodities()->void:
 	var average=0
 	var total=0
 	for bank in banks:
-		total+=abs(risk_performance_map[bank.risk_tolerance_value])
+		total+=abs(risk_performance_map[bank.risk_tolerance])
 	#average of bank absolute performances is a proxy/indicator of overall volatility i.e. high volatility -> more skewed/extreme average -> can be used to set SD of normal distribution function that determines commodity prices
 	if(banks.size()>0):
 		average=total/banks.size()
