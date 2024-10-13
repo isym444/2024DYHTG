@@ -8,7 +8,6 @@ var plane:Plane # Used for raycasting mouse
 var plane_position #used for getting coord
 
 var buildingPlacment = []
-var canBuild = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -34,7 +33,7 @@ func _input(event):
 	if(Input.is_action_just_pressed("test")):
 		print(buildingPlacment)
 	if(Input.is_action_just_pressed("click")):
-		print(canBuild)
+		print(global.canBuild)
 		#check for placment conditions
 		if(plane_position.x < -bounds or plane_position.x > bounds or plane_position.z < -bounds or plane_position.z > bounds):
 			print("out of bounds")
@@ -43,6 +42,9 @@ func _input(event):
 			print("building already placed there")
 			return
 		var building
+		if(global.canBuild==false): #making building block once popup alert is triggered
+			global.canBuild = true
+			return
 		#instantiate selected building
 		match global.currentBuilding:
 			0:
@@ -64,8 +66,8 @@ func _input(event):
 				building = load("res://scene/building/windTurbine.tscn").instantiate()
 				global.add_wind_turbine(plane_position.x,plane_position.y,plane_position.z)
 		
-		if(canBuild==false): #making building block once popup alert is triggered
-			canBuild = true
+		if(global.canBuild==false): #making building block once popup alert is triggered
+			global.canBuild = true
 			return
 		print("building placed")
 		buildingPlacment[plane_position.x][plane_position.z] = global.currentBuilding
@@ -76,4 +78,4 @@ func _input(event):
 
 func blockBuild():
 	print("building blocked")
-	canBuild = false
+	global.canBuild = false

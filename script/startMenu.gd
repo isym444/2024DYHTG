@@ -1,5 +1,4 @@
 extends Control
-var main = preload("res://scene/main.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,7 +11,7 @@ func _process(delta):
 
 
 func _on_play_button_pressed():
-	get_tree().change_scene_to_packed(main)
+	get_tree().change_scene_to_file("res://scene/main.tscn")
 
 
 func _on_quit_button_pressed():

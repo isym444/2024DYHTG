@@ -7,6 +7,8 @@ extends Control
 @onready var energy_label = %energy
 @onready var materials_label = %materials
 
+var lastState =global.canBuild
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	update_text_labels()
@@ -14,6 +16,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	update_text_labels()
+	_button_build_logic(lastState)#hotfix to keep builidng block
 	
 func update_text_labels() -> void:
 	world_health_label.text = "World health: " + str(global.world_health)
@@ -39,3 +42,8 @@ func _on_add_forest_pressed() -> void:
 
 func _on_add_wind_pressed() -> void:
 	global.currentBuilding = 5
+
+
+func _button_build_logic(buildableState):
+	lastState = buildableState
+	global.canBuild = buildableState

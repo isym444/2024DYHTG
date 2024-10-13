@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://script/main.gd" id="1_sv0h2"]
 [ext_resource type="Texture2D" uid="uid://7rqounoht2cq" path="res://asset/sprite/selector.png" id="2_h3jqb"]
 [ext_resource type="Script" path="res://script/viewControl.gd" id="3_7of7j"]
-[ext_resource type="PackedScene" path="res://scene/uI.tscn" id="4_6w7bi"]
+[ext_resource type="PackedScene" uid="uid://cfo20g138gkji" path="res://scene/uI.tscn" id="4_6w7bi"]
 
 [sub_resource type="Environment" id="Environment_cvtbx"]
 background_mode = 1
