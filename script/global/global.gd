@@ -5,12 +5,12 @@ const oil_per_factory = 1 #MB millions of barrels per time
 const materials_per_factory = 5 #building units
 const energy_per_turbine = 5 #GW
 
-const bank_building_cost = 3000000
-const apartment_building_cost = 3000000
-const oil_pump_building_cost = 3000000
-const materials_factory_cost = 3000000
-const wind_turbine_building_cost = 3000000
-const forest_building_cost = 3000000
+const bank_building_cost = 300000
+const apartment_building_cost = 300000
+const oil_pump_building_cost = 300000
+const materials_factory_cost = 300000
+const wind_turbine_building_cost = 300000
+const forest_building_cost = 300000
 
 const bank_building_materials_cost = 25
 const apartment_building_materials_cost = 25
