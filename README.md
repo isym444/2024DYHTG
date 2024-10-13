@@ -11,6 +11,15 @@ Depending on the number of banks and their average risk-taking, market volatilit
 Build too many polluting buildings however and your world's health suffers resulting in people dying. If your popultion or world health reaches 0, the game is over.
 Counteract this buy using renewable energy resources or building forests.
 
+# Hackathon details
+This game was built for a hackathon.
+The brief was to make a project that explores the idea of a chain of events.
+The sponsoring company was Marshall Wace, a hedge fund where thye have many complex systems that need to react to stakeholders, market data or evolving technology. The task was to interpret the theme however each team thought best captures the spirit of this idea.
+Examples of possibilities given were:
+- A game where your actions have consequences
+- Visualizing global supply chains
+- Creating high-throughput data processing pipelines
+
 # Start Screen
 <img width="1728" alt="image" src="https://github.com/user-attachments/assets/c323e798-8655-4176-8c20-0f7aecea2d07">
 
