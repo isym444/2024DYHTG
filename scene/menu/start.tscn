@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://by5mbncmpd5dr"]
+[gd_scene load_steps=5 format=3 uid="uid://by5mbncmpd5dr"]
 
 [ext_resource type="Script" path="res://script/startMenu.gd" id="1_wdihc"]
 [ext_resource type="Texture2D" uid="uid://bwwpolylbml2h" path="res://asset/images/DALL·E 2024-10-13 09.35.59 - A whimsical and idyllic cartoony cityscape with a balance of nature and wealth. The scene features buildings like banks and skyscrapers, but they are .webp" id="2_xukta"]
+[ext_resource type="AudioStream" uid="uid://co07ce7u5w2ia" path="res://asset/sound/Midna's Lament.mp3" id="3_tjtkp"]
 
 [sub_resource type="SystemFont" id="SystemFont_ssvyw"]
 font_names = PackedStringArray("Rockwell")
@@ -65,6 +66,10 @@ layout_mode = 2
 bbcode_enabled = true
 text = "[center]Game name[/center]"
 fit_content = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_tjtkp")
 
 [connection signal="pressed" from="VBoxContainer/playButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/quitButton" to="." method="_on_quit_button_pressed"]

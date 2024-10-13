@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dib3045lo5a0t"
+path="res://.godot/imported/Zodiac Chase & Waterfall - Endgame.mp3-a60bd43a096d8a786b2bc11358b1a2d8.mp3str"
+
+[deps]
+
+source_file="res://asset/sound/Zodiac Chase & Waterfall - Endgame.mp3"
+dest_files=["res://.godot/imported/Zodiac Chase & Waterfall - Endgame.mp3-a60bd43a096d8a786b2bc11358b1a2d8.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

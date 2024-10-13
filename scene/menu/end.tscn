@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dygwu0pdhdtxd"]
+[gd_scene load_steps=4 format=3 uid="uid://dygwu0pdhdtxd"]
 
 [ext_resource type="Script" path="res://scene/menu/end.gd" id="1_q3wh0"]
 [ext_resource type="Texture2D" uid="uid://bt0a1y14gpk4v" path="res://asset/images/pollution_endscreen.webp" id="2_bt7yy"]
+[ext_resource type="AudioStream" uid="uid://dib3045lo5a0t" path="res://asset/sound/Zodiac Chase & Waterfall - Endgame.mp3" id="3_1pxv2"]
 
 [node name="End" type="Control"]
 layout_mode = 3
@@ -46,5 +47,9 @@ text = "GAME OVER"
 layout_mode = 2
 theme_override_font_sizes/font_size = 100
 text = "Quit"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_1pxv2")
 
 [connection signal="pressed" from="VBoxContainer/quitButton" to="." method="_on_quit_button_pressed"]

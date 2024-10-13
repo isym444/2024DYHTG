@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://co07ce7u5w2ia"
+path="res://.godot/imported/Midna's Lament.mp3-ca0ea89e1e6b0eea7da5f0e505f3287e.mp3str"
+
+[deps]
+
+source_file="res://asset/sound/Midna's Lament.mp3"
+dest_files=["res://.godot/imported/Midna's Lament.mp3-ca0ea89e1e6b0eea7da5f0e505f3287e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

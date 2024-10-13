@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dvdvbhec54mwk"]
+[gd_scene load_steps=9 format=3 uid="uid://dvdvbhec54mwk"]
 
 [ext_resource type="Script" path="res://script/main.gd" id="1_sv0h2"]
 [ext_resource type="Texture2D" uid="uid://7rqounoht2cq" path="res://asset/sprite/selector.png" id="2_h3jqb"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cfo20g138gkji" path="res://scene/uI.tscn" id="4_6w7bi"]
 [ext_resource type="PackedScene" uid="uid://c8iqgdjpflydn" path="res://scene/compressedDashboard.tscn" id="5_iob65"]
 [ext_resource type="PackedScene" uid="uid://dwfclmo2spaes" path="res://scene/fullDashboard.tscn" id="6_qlkeo"]
+[ext_resource type="AudioStream" uid="uid://pc5gwi4nsiv7" path="res://asset/sound/Dreamy.mp3" id="7_rnr3d"]
 
 [sub_resource type="Environment" id="Environment_cvtbx"]
 background_mode = 1
@@ -49,5 +50,9 @@ layout_mode = 1
 unique_name_in_owner = true
 one_shot = true
 autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("7_rnr3d")
 
 [connection signal="timeout" from="enviroment/personTimer" to="." method="spawnPerson"]

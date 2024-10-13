@@ -38,6 +38,8 @@ func _process(delta):
 	#enviroment
 	maxPer = global.apartment_buildings.size() * global.personPerRes
 	handle_enviroment()
+	if %AudioStreamPlayer.playing == false:
+		%AudioStreamPlayer.play()
 
 func _input(event):
 	if(Input.is_action_just_pressed("test")):
