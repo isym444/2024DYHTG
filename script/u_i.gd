@@ -55,3 +55,8 @@ func _button_build_logic(buildableState):
 
 func _dashboard_toggle() -> void:
 	global.dashboardVis = not(global.dashboardVis)
+	global.compressedDashVis = not(global.compressedDashVis)
+	
+func _input(event: InputEvent) -> void:
+	if(Input.is_action_just_pressed("test")):
+		_dashboard_toggle()

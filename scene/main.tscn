@@ -37,6 +37,7 @@ transform = Transform3D(0.739572, 0.649795, 0.175498, -0.673077, 0.71399, 0.1928
 [node name="UI" parent="." instance=ExtResource("4_6w7bi")]
 
 [node name="compressedDashboard" parent="UI" instance=ExtResource("5_iob65")]
+unique_name_in_owner = true
 layout_mode = 1
 
 [node name="FullDashboard" parent="UI" instance=ExtResource("6_qlkeo")]
