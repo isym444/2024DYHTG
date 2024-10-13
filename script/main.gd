@@ -100,7 +100,7 @@ func spawnPerson():
 	print("spawn person")
 	if(perCount < maxPer):
 		var per = load(envInst[0]).instantiate()
-		per.global_position = selector.position
+		per.global_position = Vector3(0,0,0)
 		add_child(per)
 		perCount +=1
 	if(%personTimer.is_stopped()):
