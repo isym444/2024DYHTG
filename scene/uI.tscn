@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cfo20g138gkji"]
+[gd_scene load_steps=14 format=3 uid="uid://cfo20g138gkji"]
 
 [ext_resource type="Script" path="res://script/u_i.gd" id="1_21u8a"]
 [ext_resource type="Texture2D" uid="uid://byd4w5tppnel3" path="res://asset/sprite/residential-removebg-preview.png" id="2_tb2eu"]
@@ -7,10 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://e24ateox85a7" path="res://asset/sprite/oil_pump-removebg-preview.png" id="5_6w54x"]
 [ext_resource type="Texture2D" uid="uid://byegd07gqi7fg" path="res://asset/sprite/forest-removebg-preview.png" id="6_yook7"]
 [ext_resource type="Texture2D" uid="uid://xa10o182tdq2" path="res://asset/sprite/wind_turbine-removebg-preview.png" id="7_d0fko"]
+[ext_resource type="Texture2D" uid="uid://ik4pps4wggmt" path="res://asset/images/oilbarrels-removebg-preview.png" id="8_7erwj"]
 [ext_resource type="Script" path="res://scene/progress_bar.gd" id="8_o0e3q"]
 [ext_resource type="Script" path="res://scene/texture_progress_bar.gd" id="9_0kd4g"]
 [ext_resource type="Texture2D" uid="uid://dkqgvhpcy22r7" path="res://asset/images/clean-white-business-card-without-background-template-mockup_946657-19868 copy.jpg" id="9_5kne3"]
-[ext_resource type="Texture2D" uid="uid://ik4pps4wggmt" path="res://asset/images/oilbarrels-removebg-preview.png" id="8_7erwj"]
 [ext_resource type="Texture2D" uid="uid://b4yledhv7s00l" path="res://asset/images/electricity.png" id="9_pymc1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eop31"]
@@ -113,7 +113,6 @@ custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
 text = "Open
 Dashboard"
-
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true

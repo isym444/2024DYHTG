@@ -24,6 +24,7 @@ const personPerRes = 10
 
 #Resources
 var dashboardVis=false
+var compressedDashVis=true
 var sellOilFlag = false
 var sellEnergyFlag = false
 var money = 10000000 #GBP (10 million) #money can go down as non-residential buildings cost money to operate so they can operate at deficit if you don't sell your oil/energy or price of sell is too low
