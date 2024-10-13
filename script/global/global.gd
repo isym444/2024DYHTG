@@ -21,13 +21,14 @@ const forest_building_materials_cost = 25
 
 #enviroment
 const personPerRes = 10
+const STARTMONEY = 10000000
 
 #Resources
 var dashboardVis=false
 var compressedDashVis=true
 var sellOilFlag = false
 var sellEnergyFlag = false
-var money = 10000000 #GBP (10 million) #money can go down as non-residential buildings cost money to operate so they can operate at deficit if you don't sell your oil/energy or price of sell is too low
+var money = STARTMONEY #GBP (10 million) #money can go down as non-residential buildings cost money to operate so they can operate at deficit if you don't sell your oil/energy or price of sell is too low
 var energy = 2400 #GW (100GWh average forc city so nough for 24h)
 var oil = 5 #MB millions of barrels USA produces 11 MBPD
 #var materials = 100 #building units (each building requires different amount of materials)
@@ -326,7 +327,7 @@ func _process(delta: float) -> void:
 		#materials+=materials_per_time
 		energy+=energy_per_time
 		
-		if(money<=0 || people<=0 || world_health<=0):
+		if(money<=0 || (money!=STARTMONEY && people<=0) || world_health<=0):
 			get_tree().change_scene_to_file("res://scene/menu/end.tscn")
 		
 
