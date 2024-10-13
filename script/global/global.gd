@@ -33,6 +33,7 @@ enum bankState {CONSERVATIVE, RISKY, YOLO}
 #Buildings
 var currentBuilding:int = 0 # indicates the current building selected
 signal cantBuild #used to determine if a buiding can be built
+var canBuild = true
 var bank_template = {
 	"x": null, 
 	"y": null, 

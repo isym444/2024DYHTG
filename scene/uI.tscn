@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://cfo20g138gkji"]
+[gd_scene load_steps=9 format=3 uid="uid://cfo20g138gkji"]
 
 [ext_resource type="Script" path="res://script/u_i.gd" id="1_21u8a"]
 [ext_resource type="Texture2D" uid="uid://byd4w5tppnel3" path="res://asset/sprite/residential-removebg-preview.png" id="2_tb2eu"]
 [ext_resource type="Texture2D" uid="uid://buoa5mcs35ko0" path="res://asset/sprite/investment_bank-removebg-preview.png" id="3_gn8hg"]
+[ext_resource type="Texture2D" uid="uid://bkx46xcp8oug" path="res://asset/sprite/marshall_wace-removebg-preview.png" id="4_vv6xu"]
+[ext_resource type="Texture2D" uid="uid://e24ateox85a7" path="res://asset/sprite/oil_pump-removebg-preview.png" id="5_6w54x"]
+[ext_resource type="Texture2D" uid="uid://byegd07gqi7fg" path="res://asset/sprite/forest-removebg-preview.png" id="6_yook7"]
+[ext_resource type="Texture2D" uid="uid://xa10o182tdq2" path="res://asset/sprite/wind_turbine-removebg-preview.png" id="7_d0fko"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eop31"]
 
 [node name="UI" type="Control"]
 custom_minimum_size = Vector2(200, 500)
@@ -15,37 +21,33 @@ grow_vertical = 2
 script = ExtResource("1_21u8a")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+material = SubResource("ShaderMaterial_eop31")
 custom_minimum_size = Vector2(200, 150)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="worldHealth" type="TextEdit" parent="VBoxContainer"]
+[node name="worldHealth" type="RichTextLabel" parent="VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 25)
 layout_mode = 2
 
-[node name="money" type="TextEdit" parent="VBoxContainer"]
+[node name="money" type="RichTextLabel" parent="VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 25)
 layout_mode = 2
 
-[node name="people" type="TextEdit" parent="VBoxContainer"]
+[node name="people" type="RichTextLabel" parent="VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 25)
 layout_mode = 2
 
-[node name="oil" type="TextEdit" parent="VBoxContainer"]
+[node name="oil" type="RichTextLabel" parent="VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 25)
 layout_mode = 2
 
-[node name="energy" type="TextEdit" parent="VBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 25)
-layout_mode = 2
-
-[node name="materials" type="TextEdit" parent="VBoxContainer"]
+[node name="energy" type="RichTextLabel" parent="VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 25)
 layout_mode = 2
@@ -78,22 +80,46 @@ expand_icon = true
 [node name="addMarshall" type="Button" parent="HBoxContainer"]
 custom_minimum_size = Vector2(78, 100)
 layout_mode = 2
+icon = ExtResource("4_vv6xu")
+expand_icon = true
 
 [node name="addOil" type="Button" parent="HBoxContainer"]
 custom_minimum_size = Vector2(78, 100)
 layout_mode = 2
+icon = ExtResource("5_6w54x")
+expand_icon = true
 
 [node name="addForest" type="Button" parent="HBoxContainer"]
 custom_minimum_size = Vector2(78, 100)
 layout_mode = 2
+icon = ExtResource("6_yook7")
+expand_icon = true
 
 [node name="addWind" type="Button" parent="HBoxContainer"]
 custom_minimum_size = Vector2(78, 100)
 layout_mode = 2
+icon = ExtResource("7_d0fko")
+expand_icon = true
 
+[node name="OilPump-removebg-preview" type="Sprite2D" parent="HBoxContainer"]
+position = Vector2(-610, 295)
+texture = ExtResource("5_6w54x")
+
+[connection signal="mouse_entered" from="HBoxContainer/addResidential" to="." method="_button_build_logic" flags=6 binds= [false]]
+[connection signal="mouse_exited" from="HBoxContainer/addResidential" to="." method="_button_build_logic" binds= [true]]
 [connection signal="pressed" from="HBoxContainer/addResidential" to="." method="_on_add_residential_pressed"]
+[connection signal="mouse_entered" from="HBoxContainer/addInvestment" to="." method="_button_build_logic" binds= [false]]
+[connection signal="mouse_exited" from="HBoxContainer/addInvestment" to="." method="_button_build_logic" binds= [true]]
 [connection signal="pressed" from="HBoxContainer/addInvestment" to="." method="_on_add_investment_pressed"]
+[connection signal="mouse_entered" from="HBoxContainer/addMarshall" to="." method="_button_build_logic" binds= [false]]
+[connection signal="mouse_exited" from="HBoxContainer/addMarshall" to="." method="_button_build_logic" binds= [true]]
 [connection signal="pressed" from="HBoxContainer/addMarshall" to="." method="_on_add_marshall_pressed"]
+[connection signal="mouse_entered" from="HBoxContainer/addOil" to="." method="_button_build_logic" binds= [false]]
+[connection signal="mouse_exited" from="HBoxContainer/addOil" to="." method="_button_build_logic" binds= [true]]
 [connection signal="pressed" from="HBoxContainer/addOil" to="." method="_on_add_oil_pressed"]
+[connection signal="mouse_entered" from="HBoxContainer/addForest" to="." method="_button_build_logic" binds= [false]]
+[connection signal="mouse_exited" from="HBoxContainer/addForest" to="." method="_button_build_logic" binds= [true]]
 [connection signal="pressed" from="HBoxContainer/addForest" to="." method="_on_add_forest_pressed"]
+[connection signal="mouse_entered" from="HBoxContainer/addWind" to="." method="_button_build_logic" binds= [false]]
+[connection signal="mouse_exited" from="HBoxContainer/addWind" to="." method="_button_build_logic" binds= [true]]
 [connection signal="pressed" from="HBoxContainer/addWind" to="." method="_on_add_wind_pressed"]
