@@ -33,12 +33,3 @@ fov = 20.0
 transform = Transform3D(0.739572, 0.649795, 0.175498, -0.673077, 0.71399, 0.192836, 0, -0.26074, 0.965409, 0, 6.18253, 1.21206)
 
 [node name="UI" parent="." instance=ExtResource("4_6w7bi")]
-
-[node name="enviroment" type="Node3D" parent="."]
-
-[node name="personTimer" type="Timer" parent="enviroment"]
-unique_name_in_owner = true
-one_shot = true
-autostart = true
-
-[connection signal="timeout" from="enviroment/personTimer" to="." method="spawnPerson"]

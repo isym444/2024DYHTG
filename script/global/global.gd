@@ -19,6 +19,9 @@ const materials_factory_materials_cost = 25
 const wind_turbine_materials_cost = 25
 const forest_building_materials_cost = 25
 
+#enviroment
+const personPerRes = 10
+
 #Resources
 var money = 10000000 #GBP (10 million) #money can go down as non-residential buildings cost money to operate so they can operate at deficit if you don't sell your oil/energy or price of sell is too low
 var energy = 2400 #GW (100GWh average forc city so nough for 24h)
@@ -293,7 +296,7 @@ func _process(delta: float) -> void:
 		#materials+=materials_per_time
 		energy+=energy_per_time
 		
-		if(money<0 || people<0 || world_health<0 || time_survived>15):
+		if(money<0 || people<0 || world_health<0):
 			get_tree().change_scene_to_file("res://scene/menu/end.tscn")
 		
 

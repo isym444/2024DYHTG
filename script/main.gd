@@ -9,6 +9,11 @@ var plane_position #used for getting coord
 
 var buildingPlacment = []
 
+var envInst = ["res://scene/enviroment/npc.tscn"]#smoke,tuffs of grass,animatied sprites
+var perCount = 0
+var perSpawnLoc = []
+var maxPer
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	plane = Plane(Vector3.UP, Vector3.ZERO)
@@ -28,10 +33,14 @@ func _process(delta):
 		
 	plane_position = Vector3(round(world_position.x), 0, round(world_position.z))
 	selector.position = lerp(selector.position, plane_position, delta * 40)
+	
+	#enviroment
+	maxPer = global.apartment_buildings.size() * global.personPerRes
+	handle_enviroment()
 
 func _input(event):
 	if(Input.is_action_just_pressed("test")):
-		print(buildingPlacment)
+		getBuildingCountById(0)
 	if(Input.is_action_just_pressed("click")):
 		print(global.canBuild)
 		#check for placment conditions
@@ -79,3 +88,28 @@ func _input(event):
 func blockBuild():
 	print("building blocked")
 	global.canBuild = false
+
+func handle_enviroment():
+	pass
+	#handle person
+	
+func spawnPerson():
+	print("spawn person")
+	if(perCount < maxPer):
+		var per = load(envInst[0]).instantiate()
+		per.global_position = selector.position
+		add_child(per)
+		perCount +=1
+	if(%personTimer.is_stopped()):
+		%personTimer.start(10)
+
+func getBuildingCountById(id):
+	var count = 0
+	perSpawnLoc = []
+	for i in range(buildingPlacment.size()):
+		for j in range(buildingPlacment.size()):
+			if(buildingPlacment[i][j] == 0):
+				perSpawnLoc.append(Vector3i(i,0,j))
+				count +=1
+				
+	return count
