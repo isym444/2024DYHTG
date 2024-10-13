@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://7rqounoht2cq" path="res://asset/sprite/selector.png" id="2_h3jqb"]
 [ext_resource type="Script" path="res://script/viewControl.gd" id="3_7of7j"]
 [ext_resource type="PackedScene" uid="uid://cfo20g138gkji" path="res://scene/uI.tscn" id="4_6w7bi"]
-[ext_resource type="PackedScene" uid="uid://ce5hwf5520eia" path="res://scene/compressedDashboard.tscn" id="5_xm33t"]
-[ext_resource type="PackedScene" uid="uid://cie5mbypk1vfa" path="res://scene/fullDashboard.tscn" id="6_qlkeo"]
+[ext_resource type="PackedScene" path="res://scene/compressedDashboard.tscn" id="5_iob65"]
+[ext_resource type="PackedScene" uid="uid://dwfclmo2spaes" path="res://scene/fullDashboard.tscn" id="6_qlkeo"]
 
 [sub_resource type="Environment" id="Environment_cvtbx"]
 background_mode = 1
@@ -36,9 +36,12 @@ transform = Transform3D(0.739572, 0.649795, 0.175498, -0.673077, 0.71399, 0.1928
 
 [node name="UI" parent="." instance=ExtResource("4_6w7bi")]
 
-[node name="Dashboard" parent="." instance=ExtResource("5_xm33t")]
+[node name="compressedDashboard" parent="UI" instance=ExtResource("5_iob65")]
+layout_mode = 1
 
-[node name="FullDashboard" parent="." instance=ExtResource("6_qlkeo")]
+[node name="FullDashboard" parent="UI" instance=ExtResource("6_qlkeo")]
+unique_name_in_owner = true
+layout_mode = 1
 
 [node name="enviroment" type="Node3D" parent="."]
 

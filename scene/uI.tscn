@@ -53,7 +53,7 @@ custom_minimum_size = Vector2(200, 25)
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-custom_minimum_size = Vector2(490, 100)
+custom_minimum_size = Vector2(568, 100)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.004
@@ -101,9 +101,11 @@ layout_mode = 2
 icon = ExtResource("7_d0fko")
 expand_icon = true
 
-[node name="OilPump-removebg-preview" type="Sprite2D" parent="HBoxContainer"]
-position = Vector2(-610, 295)
-texture = ExtResource("5_6w54x")
+[node name="openDashboard" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+text = "Open
+Dashboard"
 
 [connection signal="mouse_entered" from="HBoxContainer/addResidential" to="." method="_button_build_logic" flags=6 binds= [false]]
 [connection signal="mouse_exited" from="HBoxContainer/addResidential" to="." method="_button_build_logic" binds= [true]]
@@ -123,3 +125,6 @@ texture = ExtResource("5_6w54x")
 [connection signal="mouse_entered" from="HBoxContainer/addWind" to="." method="_button_build_logic" binds= [false]]
 [connection signal="mouse_exited" from="HBoxContainer/addWind" to="." method="_button_build_logic" binds= [true]]
 [connection signal="pressed" from="HBoxContainer/addWind" to="." method="_on_add_wind_pressed"]
+[connection signal="mouse_entered" from="HBoxContainer/openDashboard" to="." method="_button_build_logic" binds= [true]]
+[connection signal="mouse_exited" from="HBoxContainer/openDashboard" to="." method="_button_build_logic" binds= [false]]
+[connection signal="pressed" from="HBoxContainer/openDashboard" to="." method="_dashboard_toggle"]

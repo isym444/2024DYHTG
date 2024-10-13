@@ -27,6 +27,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	%FullDashboard.visible = global.dashboardVis
 	var world_position = plane.intersects_ray(
 		view_camera.project_ray_origin(get_viewport().get_mouse_position()),
 		view_camera.project_ray_normal(get_viewport().get_mouse_position()))
