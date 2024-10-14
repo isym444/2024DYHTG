@@ -14,7 +14,8 @@ Counteract this buy using renewable energy resources or building forests.
 # Hackathon details
 This game was built for a hackathon.
 The brief was to make a project that explores the idea of a chain of events.
-The sponsoring company was Marshall Wace, a hedge fund where thye have many complex systems that need to react to stakeholders, market data or evolving technology. The task was to interpret the theme however each team thought best captures the spirit of this idea.
+The sponsoring company was Marshall Wace, a hedge fund where they have many complex systems that need to react to stakeholders, market data or evolving technology. The task was to interpret the theme however each team thought best captures the spirit of this idea.
+
 Examples of possibilities given were:
 - A game where your actions have consequences
 - Visualizing global supply chains
